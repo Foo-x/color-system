@@ -16,5 +16,9 @@
   "homepage": "https://github.com/Foo-x/color-system#readme",
   "devDependencies": {
     "typescript": "^3.9.5"
-  }
+  },
+  "files": [
+    "dist",
+    "scss"
+  ]
 }
