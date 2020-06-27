@@ -1,0 +1,20 @@
+{
+  "name": "color-system",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Foo-x/color-system.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Foo-x/color-system/issues"
+  },
+  "homepage": "https://github.com/Foo-x/color-system#readme",
+  "devDependencies": {
+    "typescript": "^3.9.5"
+  }
+}
