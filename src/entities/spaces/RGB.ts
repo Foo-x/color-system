@@ -1,4 +1,4 @@
-import { UInt8, toUInt8 } from "./UInt8";
+import { UInt8, toUInt8 } from "../units/UInt8";
 
 export interface RGB {
   r: UInt8;

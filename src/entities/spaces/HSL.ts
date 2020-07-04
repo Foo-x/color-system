@@ -1,5 +1,5 @@
-import { Degree, toDegree, clampBetween0And360 } from "./Degree";
-import { Percent, toPercent, clampBetween0And1 } from "./Percent";
+import { Degree, toDegree, clampBetween0And360 } from "../units/Degree";
+import { Percent, toPercent, clampBetween0And1 } from "../units/Percent";
 
 export interface HSL {
   h: Degree;
