@@ -3,6 +3,9 @@
     "target": "ES5",
     "module": "CommonJS",
     "moduleResolution": "node",
+    "lib": [
+      "ESNext"
+    ],
     "esModuleInterop": true,
     "declaration": true,
     "declarationMap": true,
