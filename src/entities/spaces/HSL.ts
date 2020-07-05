@@ -1,5 +1,5 @@
 import { Degree, toDegree, clampBetween0And360 } from "../units/Degree";
-import { Percent, toPercent, clampBetween0And1 } from "../units/Percent";
+import { Percent, toPercent, clampBetween0And100 } from "../units/Percent";
 
 export interface HSL {
   h: Degree;
@@ -14,7 +14,7 @@ export const toHSL = (h: number, s: number, l: number): HSL => {
 
   return {
     h: clampBetween0And360(newH),
-    s: clampBetween0And1(newS),
-    l: clampBetween0And1(newL),
+    s: clampBetween0And100(newS),
+    l: clampBetween0And100(newL),
   };
 };
