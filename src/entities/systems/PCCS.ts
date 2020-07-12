@@ -45,6 +45,7 @@ export const vividHues = [
   24,
 ] as const;
 export type VividHue = typeof vividHues[number];
+const MAX_HUE = 24;
 
 export const hues = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24] as const;
 export type Hue = typeof hues[number];
@@ -322,4 +323,42 @@ export const pccs2rgb = (color: PCCSColor): RGB => {
     return PCCS2RGB[color.tone][color.hue];
   }
   return PCCS2RGB[color.tone][color.hue];
+};
+
+const differentHues = (
+  base: VividHue,
+  diff: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
+): Array<VividHue> => {
+  const plusHue = (((base + diff - 1) % MAX_HUE) + 1) as VividHue;
+  const minusHue = (((base - diff + MAX_HUE - 1) % MAX_HUE) + 1) as VividHue;
+  return plusHue === minusHue ? [plusHue] : [plusHue, minusHue];
+};
+
+export const adjacentHues = (base: VividHue): Array<VividHue> => {
+  return differentHues(base, 1);
+};
+
+export const analogousHues = (base: VividHue): Array<VividHue> => {
+  return [...differentHues(base, 2), ...differentHues(base, 3)];
+};
+
+export const midDifferenceHues = (base: VividHue): Array<VividHue> => {
+  return [
+    ...differentHues(base, 4),
+    ...differentHues(base, 5),
+    ...differentHues(base, 6),
+    ...differentHues(base, 7),
+  ];
+};
+
+export const opponentHues = (base: VividHue): Array<VividHue> => {
+  return [
+    ...differentHues(base, 8),
+    ...differentHues(base, 9),
+    ...differentHues(base, 10),
+  ];
+};
+
+export const complementaryHues = (base: VividHue): Array<VividHue> => {
+  return [...differentHues(base, 11), ...differentHues(base, 12)];
 };
