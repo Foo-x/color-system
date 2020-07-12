@@ -362,3 +362,93 @@ export const opponentHues = (base: VividHue): Set<VividHue> => {
 export const complementaryHues = (base: VividHue): Set<VividHue> => {
   return new Set([...differentHues(base, 11), ...differentHues(base, 12)]);
 };
+
+export const analogousTones = (base: Tone): Set<Tone> => {
+  if (base === "v") {
+    return new Set(["b", "s", "dp"]);
+  }
+  if (base === "b") {
+    return new Set(["v", "s", "lt", "ltp", "sf", "d"]);
+  }
+  if (base === "s") {
+    return new Set(["v", "b", "dp", "lt", "ltp", "sf", "d", "dk"]);
+  }
+  if (base === "dp") {
+    return new Set(["v", "s", "sf", "d", "dk"]);
+  }
+  if (base === "lt" || base === "ltp") {
+    return new Set(["b", "s", "sf", "p", "pp", "ltg"]);
+  }
+  if (base === "sf") {
+    return new Set(["b", "s", "dp", "lt", "ltp", "d", "p", "pp", "ltg", "g"]);
+  }
+  if (base === "d") {
+    return new Set(["b", "s", "dp", "sf", "dk", "ltg", "g", "dkg"]);
+  }
+  if (base === "dk") {
+    return new Set(["s", "dp", "d", "g", "dkg"]);
+  }
+  if (base === "p" || base === "pp") {
+    return new Set(["lt", "ltp", "sf", "ltg"]);
+  }
+  if (base === "ltg") {
+    return new Set(["lt", "ltp", "sf", "d", "p", "pp", "g"]);
+  }
+  if (base === "g") {
+    return new Set(["sf", "d", "dk", "ltg", "dkg"]);
+  }
+  return new Set(["d", "dk", "g"]);
+};
+
+export const highSaturationTones: Set<Tone> = new Set(["v", "b", "s", "dp"]);
+export const middleSaturationTones: Set<Tone> = new Set([
+  "lt",
+  "ltp",
+  "sf",
+  "d",
+  "dk",
+]);
+export const lowSaturationTones: Set<Tone> = new Set([
+  "p",
+  "pp",
+  "ltg",
+  "g",
+  "dkg",
+]);
+
+export const opponentSaturationTones = (base: Tone): Set<Tone> => {
+  if (highSaturationTones.has(base)) {
+    return new Set([...lowSaturationTones]);
+  }
+  if (lowSaturationTones.has(base)) {
+    return new Set([...highSaturationTones]);
+  }
+  return new Set();
+};
+
+export const highLightnessTones: Set<Tone> = new Set([
+  "b",
+  "lt",
+  "ltp",
+  "p",
+  "pp",
+]);
+export const middleLightnessTones: Set<Tone> = new Set([
+  "v",
+  "s",
+  "sf",
+  "d",
+  "ltg",
+  "g",
+]);
+export const lowLightnessTones: Set<Tone> = new Set(["dp", "dk", "dkg"]);
+
+export const opponentLightnessTones = (base: Tone): Set<Tone> => {
+  if (highLightnessTones.has(base)) {
+    return new Set([...lowLightnessTones]);
+  }
+  if (lowLightnessTones.has(base)) {
+    return new Set([...highLightnessTones]);
+  }
+  return new Set();
+};
