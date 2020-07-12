@@ -328,37 +328,37 @@ export const pccs2rgb = (color: PCCSColor): RGB => {
 const differentHues = (
   base: VividHue,
   diff: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
-): Array<VividHue> => {
+): Set<VividHue> => {
   const plusHue = (((base + diff - 1) % MAX_HUE) + 1) as VividHue;
   const minusHue = (((base - diff + MAX_HUE - 1) % MAX_HUE) + 1) as VividHue;
-  return plusHue === minusHue ? [plusHue] : [plusHue, minusHue];
+  return new Set([plusHue, minusHue]);
 };
 
-export const adjacentHues = (base: VividHue): Array<VividHue> => {
+export const adjacentHues = (base: VividHue): Set<VividHue> => {
   return differentHues(base, 1);
 };
 
-export const analogousHues = (base: VividHue): Array<VividHue> => {
-  return [...differentHues(base, 2), ...differentHues(base, 3)];
+export const analogousHues = (base: VividHue): Set<VividHue> => {
+  return new Set([...differentHues(base, 2), ...differentHues(base, 3)]);
 };
 
-export const midDifferenceHues = (base: VividHue): Array<VividHue> => {
-  return [
+export const midDifferenceHues = (base: VividHue): Set<VividHue> => {
+  return new Set([
     ...differentHues(base, 4),
     ...differentHues(base, 5),
     ...differentHues(base, 6),
     ...differentHues(base, 7),
-  ];
+  ]);
 };
 
-export const opponentHues = (base: VividHue): Array<VividHue> => {
-  return [
+export const opponentHues = (base: VividHue): Set<VividHue> => {
+  return new Set([
     ...differentHues(base, 8),
     ...differentHues(base, 9),
     ...differentHues(base, 10),
-  ];
+  ]);
 };
 
-export const complementaryHues = (base: VividHue): Array<VividHue> => {
-  return [...differentHues(base, 11), ...differentHues(base, 12)];
+export const complementaryHues = (base: VividHue): Set<VividHue> => {
+  return new Set([...differentHues(base, 11), ...differentHues(base, 12)]);
 };
