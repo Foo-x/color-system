@@ -452,3 +452,26 @@ export const opponentLightnessTones = (base: Tone): Set<Tone> => {
   }
   return new Set();
 };
+
+export const tonalTones: Set<Tone> = new Set(["sf", "d", "ltg", "g"]);
+
+export const dyadHues = (base: VividHue): Set<VividHue> => {
+  return differentHues(base, 12).add(base);
+};
+
+export const triadHues = (base: VividHue): Set<VividHue> => {
+  return differentHues(base, 8).add(base);
+};
+
+export const tetradHues = (base: VividHue): Set<VividHue> => {
+  return new Set([...differentHues(base, 6), ...differentHues(base, 12), base]);
+};
+
+export const hexadHues = (base: VividHue): Set<VividHue> => {
+  return new Set([
+    ...differentHues(base, 4),
+    ...differentHues(base, 8),
+    ...differentHues(base, 12),
+    base,
+  ]);
+};
