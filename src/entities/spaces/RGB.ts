@@ -11,7 +11,7 @@ export const toRGB = (r: number, g: number, b: number): RGB | undefined => {
   const newG = toUInt8(g);
   const newB = toUInt8(b);
 
-  if (!newR || !newG || !newB) {
+  if (newR === undefined || newG === undefined || newB === undefined) {
     return;
   }
 
