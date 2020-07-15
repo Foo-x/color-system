@@ -10,8 +10,6 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
